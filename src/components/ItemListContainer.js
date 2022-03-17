@@ -1,7 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useEffect, useState } from 'react';
 import { getFetch } from '../helpers/getFetch';
-import img from '../Media/toall2.jpeg';
+
+import ItemList from './ItemList';
 
 
 
@@ -22,28 +23,10 @@ function ItemListContainer({saludo}) {
     
     return(
         <>
-            <div className="container-fluid text-center">{saludo}</div>
-
-            {   load ? <div className='container-fluid text-center'> <h3>Cargando...</h3></div>
-                :
-                prods.map(prod => 
-                    <div key={prod.id}className='col-md-4'>                        
-                        <div className="card w-100 mt-5" >
-                            <div className="card-header">
-                                {`${prod.name} - ${prod.price}`}
-                            </div>
-                            <div className="card-body">
-                                <img src={img} alt='imagen' className='w-50'/>                                                          
-                            </div>
-                            <div className="card-footer">  
-                                <button className="btn btn-outline-primary btn-block">
-                                    detalle del producto
-                                </button>                                                       
-                            </div>
-                        </div>
-                    </div>
-
-            )} 
+                {load ? <div className='container-fluid text-center'> <h3>Cargando...</h3></div> 
+                    :
+                        <ItemList prods={prods} />
+                } 
         </>
 
     );
