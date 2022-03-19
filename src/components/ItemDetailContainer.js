@@ -6,7 +6,7 @@ function ItemDetailContianer() {
     const [prod, setProd] = useState({})
     
     useEffect(()=>{
-        gFetchB
+        gFetchB("1")
         .then(prod => setProd(prod))
         .catch(err => console.log(err))
     }, [])
