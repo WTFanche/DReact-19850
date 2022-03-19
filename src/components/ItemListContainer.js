@@ -1,12 +1,13 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useEffect, useState } from 'react';
 import { getFetch } from '../helpers/getFetch';
-
+import Itemcount from './ItemCount';
+import ItemDetailContianer from './ItemDetailContainer';
 import ItemList from './ItemList';
 
 
 
-function ItemListContainer({saludo}) {
+function ItemListContainer() {
     
     const [prods, setProds] = useState([])
     const [load, setLoad] = useState(true)
@@ -26,7 +27,9 @@ function ItemListContainer({saludo}) {
                 {load ? <div className='container-fluid text-center'> <h3>Cargando...</h3></div> 
                     :
                         <ItemList prods={prods} />
-                } 
+                }
+                <Itemcount stock="5" initial="1"/>
+                <ItemDetailContianer />
         </>
 
     );

@@ -3,13 +3,18 @@
 }
 
 .padd2 {
-  padding-left: 342px;
+  padding-left: 330px;
 }
 
 .padd3 {
-  padding-left: 50px;
+  padding-left: 30px;
 }
 .logoCarro {
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
+}
+
+.img2 {
+  width: 100px;
+  height: 100px;
 }

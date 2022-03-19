@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Cartwidget from './CartWidget';
 
 
-function  Navbar() {
+function Navbar() {
     return(
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
@@ -16,7 +16,7 @@ function  Navbar() {
                 </div>
                 <div className="col-1 padd3">
                     <div className="logoCarro">
-                        <Cartwidget />
+                        <Cartwidget/>
                     </div>
                 </div>
             </div>
