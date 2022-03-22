@@ -1,4 +1,4 @@
-import img from '../Media/toall2.jpeg';
+import { Link } from "react-router-dom";
 
 
 function Item({prod}) {
@@ -11,12 +11,14 @@ function Item({prod}) {
                         {`${prod.name} - ${prod.price}`}
                     </div>
                     <div className="card-body">
-                        <img src={img} alt='imagen' className='w-50'/>                                                          
+                        <img src={prod.img} alt='imagen' className='w-50'/>                                                          
                     </div>
                     <div className="card-footer">  
-                        <button className="btn btn-outline-primary btn-block">
-                            detalle del producto
-                        </button>                                                       
+                        <Link to={`detail/${prod.id}`} >
+                            <button className="btn btn-outline-primary btn-block">
+                                detalle del producto
+                            </button>    
+                        </Link>                                                   
                     </div>
                 </div>
             </div>

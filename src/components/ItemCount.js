@@ -50,10 +50,3 @@ function Itemcount({stock, initial}) {
 }
 
 export default Itemcount;
-
-
-/* 
-<button>+</button>
-<div className=""></div> 
-
-*/
