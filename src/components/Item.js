@@ -14,7 +14,7 @@ function Item({prod}) {
                         <img src={prod.img} alt='imagen' className='w-50'/>                                                          
                     </div>
                     <div className="card-footer">  
-                        <Link to={`detail/${prod.id}`} >
+                        <Link to={`/detail/${prod.id}`} >
                             <button className="btn btn-outline-primary btn-block">
                                 detalle del producto
                             </button>    

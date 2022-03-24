@@ -7,14 +7,16 @@ import ItemDetail from "./ItemDetail"
 
 function ItemDetailContianer() {
     const [prod, setProd] = useState({})
+    const { detailId } = useParams()
     
+
     useEffect(()=>{
-        gFetchB("1")
-        .then(prod => setProd(prod))
+        gFetchB
+        .then( resp => setProd(resp.filter(prod=> prod.id === detailId)))
         .catch(err => console.log(err))
     }, [])
     
-    const { detailId } = useParams()
+    
 
     return (
         <div>

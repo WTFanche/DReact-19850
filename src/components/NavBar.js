@@ -13,14 +13,14 @@ function Navbar() {
                 </NavLink>
                 <div className="collapse navbar-collapse col-8 padd2" id="navbarNavAltMarkup">
                     <div className="navbar-nav">
-                        <NavLink to="category/toallita"> 
-                            <a className="nav-link" aria-current="page" >Toallita</a>
+                        <NavLink to="category/toallitas"> 
+                            <a className="nav-link" aria-current="page" >toallitas</a>
                         </NavLink>
-                        <NavLink to="category/protector"> 
-                            <a className="nav-link" >Protector</a>
+                        <NavLink to="category/protectores"> 
+                            <a className="nav-link" >protectores</a>
                         </NavLink>
-                        <NavLink to="category/copa"> 
-                            <a className="nav-link">Copa</a>
+                        <NavLink to="category/copas"> 
+                            <a className="nav-link">copas</a>
                         </NavLink>    
                     </div>
                 </div>

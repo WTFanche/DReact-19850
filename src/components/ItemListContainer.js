@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getFetch } from '../helpers/getFetch';
-import Itemcount from './ItemCount';
+/* import Itemcount from './ItemCount'; */
 import ItemList from './ItemList';
 
 
@@ -15,14 +15,12 @@ function ItemListContainer() {
 
     const { id } = useParams()
 
-    
-
     useEffect(() => {
 
         if (id) {
             // inicio promesa
             getFetch
-            .then( resp => setProds(resp.filter(prod=> prod.name === id)))
+            .then( resp => setProds(resp.filter(prod=> prod.category === id)))
             .catch(err => console.log(err))
             .finally(() => setLoad(false))
             // fin promesa
@@ -45,7 +43,7 @@ function ItemListContainer() {
                         <ItemList prods={prods} /> 
                         
                 }
-                <Itemcount stock="5" initial="1"/>
+                {/* <Itemcount stock="5" initial="1"/> */}
         </>
 
     );
