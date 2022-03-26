@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useCartContext } from "./CartContext";
 import Itemcount from "./ItemCount";
 
 
@@ -7,21 +8,25 @@ import Itemcount from "./ItemCount";
 const AddCart = () => {
   return(
     <Link to="/cart" >
-      <button className="btn btn-primary btn-sm">Ir al carrito</button>
+      <button className="btn btn-outline-success btn-sm">Finalizar compra</button>
     </Link>
   )
 }
-
+ 
 
 
 function ItemDetail({product}) {
 
   const [ buttonType, setButtonType ]  = useState("itemCount")
-  
-  const changeButton=()=>{
-    setButtonType("AddButton")
-  }
 
+  const { addToCart } = useCartContext()
+  
+  const onAdd=(qty)=>{
+    setButtonType("AddButton");
+    addToCart({ ...product, cantidad: qty })
+    console.log(qty);
+  }
+  
   return (
     <>
     <div className='container-fluid'>
@@ -35,7 +40,7 @@ function ItemDetail({product}) {
     </div>
     {
       buttonType === "itemCount" ?
-        <Itemcount stock="5" initial="1" onAdd={changeButton}/>
+        <Itemcount stock={5} initial={1} onAdd={onAdd}/>
       :
         <AddCart />
     } 

@@ -18,24 +18,25 @@ function Itemcount({stock, initial, onAdd}) {
                     setCount( count - 1 )
                 }
             }
-            
+                    
+
     return(
         <>
             <div className="container-fluid">
                 <div className="row justify-content-center"> 
                     <div className="col-1">
-                        <button onClick={handleCountR} className="btn btn-primary btn-sm">-</button>
+                        <button onClick={handleCountR} className="btn btn-light btn-sm">-</button>
                     </div>
                     <div className="col-1">
                         <label>{count}</label>
                     </div> 
                     <div className="col-1">
-                        <button onClick={handleCountS} className="btn btn-primary btn-sm">+</button>
+                        <button onClick={handleCountS} className="btn btn-light btn-sm">+</button>
                     </div> 
                 </div>
                 <div className="row justify-content-center">
                     <div className="col-2"> 
-                        <button onClick={onAdd} className="btn btn-primary btn-sm">Agregar al carrito</button>
+                        <button onClick={onAdd} className="btn btn-outline-info btn-sm">Agregar al carrito</button>
                     </div>
                 </div> 
             </div>
