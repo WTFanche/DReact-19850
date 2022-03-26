@@ -24,9 +24,7 @@ export const getFetch = new Promise((resolve, reject)=>{
 export const gFetchB = (id) => new Promise((resolve, reject)=>{
     let condition = true
     if (condition) {
-        setTimeout(() => {
-            resolve(prods.find(prod => prod.id === id))                    
-        }, 2000);
+        resolve(prods.find(prod => prod.id === id))                    
     } else {
         reject('400 - not found')        
     }

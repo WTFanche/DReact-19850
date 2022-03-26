@@ -11,17 +11,19 @@ function ItemDetailContianer() {
     
 
     useEffect(()=>{
-        gFetchB
-        .then( resp => setProd(resp.filter(prod=> prod.id === detailId)))
+
+        gFetchB(detailId)
+        .then( resp => setProd(resp))
         .catch(err => console.log(err))
-    }, [])
+        },
+        [detailId])
     
     
 
     return (
-        <div>
+        <center>
             <ItemDetail product={prod}/>
-        </div>
+        </center>
     )
 }
 

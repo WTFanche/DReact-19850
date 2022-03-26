@@ -9,18 +9,18 @@ function Navbar() {
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
                 <NavLink to="/">
-                    <a className="navbar-brand col-3 padd1" >Somos Luna</a>
+                    <p className="navbar-brand col-3 padd1" >Somos Luna</p>
                 </NavLink>
                 <div className="collapse navbar-collapse col-8 padd2" id="navbarNavAltMarkup">
                     <div className="navbar-nav">
                         <NavLink to="category/toallitas"> 
-                            <a className="nav-link" aria-current="page" >toallitas</a>
+                            <p className="nav-link" aria-current="page" >toallitas</p>
                         </NavLink>
                         <NavLink to="category/protectores"> 
-                            <a className="nav-link" >protectores</a>
+                            <p className="nav-link" >protectores</p>
                         </NavLink>
                         <NavLink to="category/copas"> 
-                            <a className="nav-link">copas</a>
+                            <p className="nav-link">copas</p>
                         </NavLink>    
                     </div>
                 </div>

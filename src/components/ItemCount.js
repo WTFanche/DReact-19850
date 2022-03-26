@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { useState } from 'react'
 
 
-function Itemcount({stock, initial}) {
+function Itemcount({stock, initial, onAdd}) {
 
     const [ count, setCount ]  = useState(1)
 
@@ -17,13 +17,8 @@ function Itemcount({stock, initial}) {
                 if (count > initial) {
                     setCount( count - 1 )
                 }
-                
-
             }
             
-            const onAdd = () => {
-                    console.log(count);
-            }
     return(
         <>
             <div className="container-fluid">
