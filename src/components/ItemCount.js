@@ -36,7 +36,7 @@ function Itemcount({stock, initial, onAdd}) {
                 </div>
                 <div className="row justify-content-center">
                     <div className="col-2"> 
-                        <button onClick={onAdd} className="btn btn-outline-info btn-sm">Agregar al carrito</button>
+                        <button onClick={( ) => onAdd(count)} className="btn btn-success btn-sm">Agregar al carrito</button>
                     </div>
                 </div> 
             </div>
