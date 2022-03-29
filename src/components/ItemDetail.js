@@ -30,19 +30,8 @@ function ItemDetail({product}) {
   
   const onAdd=(qty)=>{
     setButtonType("AddButton");
-    //Hacer el find aca es error, no?
-    // porque no voy a poder pasarlo al cart[]
-    /* if (fProd) {
-           
-    } else {
-      addToCart({ ...product, cantidad: qty })
-      console.log(qty);   
-    }
-    */
-
     addToCart({ ...product, cantidad: qty })
     console.log(qty);
-
   }
   
   return (
