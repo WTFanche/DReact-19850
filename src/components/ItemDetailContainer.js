@@ -8,6 +8,7 @@ import ItemDetail from "./ItemDetail"
 function ItemDetailContianer() {
     const [prod, setProd] = useState({})
     const { detailId } = useParams()
+    const [load, setLoad] = useState(true)
     
 
     useEffect(()=>{
@@ -15,15 +16,24 @@ function ItemDetailContianer() {
         gFetchB(detailId)
         .then( resp => setProd(resp))
         .catch(err => console.log(err))
+        .finally(() => setLoad(false))
         },
         [detailId])
     
     
 
     return (
-        <center>
-            <ItemDetail product={prod}/>
-        </center>
+        <>
+        {
+            load ? <div className='container-fluid text-center'> <h3>Cargando...</h3></div>
+            
+            :
+
+            <center>
+                <ItemDetail product={prod}/>
+            </center>
+        }
+        </>
     )
 }
 
