@@ -19,7 +19,7 @@ function ItemListContainer() {
       
             try {
               const dataBase = getFirestore()
-              const queryCollection =  collection(dataBase, 'desafios')
+              const queryCollection =  collection(dataBase, 'Products')
               
               const filterQuery = idColl ? query(queryCollection, where('category', '==', idColl)) : queryCollection
       
