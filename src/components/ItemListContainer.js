@@ -29,7 +29,7 @@ function ItemListContainer() {
                 setLoad(false);
       
             } catch (error) {
-              
+               /* Ingresar de Errores */
             }
                   
         }

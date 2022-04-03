@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { gFetchB } from "../helpers/getFetch"
+/* import { gFetchB } from "../helpers/getFetch" */
 import ItemDetail from "./ItemDetail"
+import { doc, getDoc, getFirestore } from 'firebase/firestore';
 
 
 
@@ -13,11 +14,26 @@ function ItemDetailContianer() {
 
     useEffect(()=>{
 
-        gFetchB(detailId)
-        .then( resp => setProd(resp))
-        .catch(err => console.log(err))
-        .finally(() => setLoad(false))
-        
+        async function getById() {
+
+            try {
+              const db = getFirestore();
+              const item = doc(db, 'Products' , detailId);
+              const response = await getDoc(item)
+              
+              setProd( { id: response.id, ...response.data()} );
+              setLoad(false);
+            } catch (error) {
+              /* Ingresar de Errores */
+            }
+            
+          }
+      
+          getById();
+
+
+
+
     },[detailId])
     
     
