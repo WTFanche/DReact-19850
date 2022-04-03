@@ -17,8 +17,8 @@ function ItemDetailContianer() {
         .then( resp => setProd(resp))
         .catch(err => console.log(err))
         .finally(() => setLoad(false))
-        },
-        [detailId])
+        
+    },[detailId])
     
     
 
