@@ -21,7 +21,7 @@ function App() {
               }
             />
             <Route 
-              path="/category/:id" 
+              path="/category/:idColl" 
               element={
                 <ItemListContainer />
               }

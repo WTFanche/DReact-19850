@@ -1,3 +1,4 @@
+import { addDoc, collection, getFirestore } from "firebase/firestore";
 import { Link } from "react-router-dom"
 import { useCartContext } from "./CartContext"
 
@@ -5,13 +6,32 @@ function Cart() {
 
   const { cartList, deleteCart, deleteProd, totalPrice } = useCartContext()
 
+    const addOrder = (e) => {
+      e.preventDefault();
+      let order = {}
+
+      order.buyer = {name: "Facundo", email: "wtfanche@gmail.com", tel: "1186546787"}
+      order.total = totalPrice()
+
+      order.items = cartList.map(cartItem => {
+          const id = cartItem.id
+          const name = cartItem.name
+          const price = cartItem.price * cartItem.cantidad
+
+          return {id, name, price}
+      })
+
+      const dataBase = getFirestore()
+      const qColl = collection(dataBase, "ordenes")
+      addDoc(qColl, order)
+      .then(resp => console.log(resp.id))
+    } 
+
     return (
       <div className="container-fluid">
         {
           (cartList.length === 0)
-
           &&
-
           <center>
             <p>Todavia no agregaste productos a tu carrito</p>
             <Link to="/">
@@ -64,6 +84,9 @@ function Cart() {
             <div className="col-3">
               <button onClick={deleteCart} className="btn btn-danger btn-sm">
                 Vaciar Carrito
+              </button>
+              <button onClick={addOrder} className="btn btn-success btn-sm">
+                Realizar orden
               </button>
             </div>
           </div>
