@@ -1,16 +1,19 @@
 import { addDoc, collection, getFirestore } from "firebase/firestore";
+import { useState } from "react";
 import { Link } from "react-router-dom"
 import { useCartContext } from "./CartContext"
+import CartTable from "./CartTable";
 
 function Cart() {
+  const [formData, setFormData] = useState({name: "", email: "", phone: ""})
+  const [id, setId] = useState(null)
+  const { cartList, deleteCart, totalPrice } = useCartContext()
 
-  const { cartList, deleteCart, deleteProd, totalPrice } = useCartContext()
-
-    const addOrder = (e) => {
+    const addOrder = async (e) => {
       e.preventDefault();
       let order = {}
 
-      order.buyer = {name: "Facundo", email: "wtfanche@gmail.com", tel: "1186546787"}
+      order.buyer = formData
       order.total = totalPrice()
 
       order.items = cartList.map(cartItem => {
@@ -23,12 +26,22 @@ function Cart() {
 
       const dataBase = getFirestore()
       const qColl = collection(dataBase, "ordenes")
-      addDoc(qColl, order)
-      .then(resp => console.log(resp.id))
-    } 
+      await addDoc(qColl, order)
+      .then(({id}) => setId(id))
+      .catch(err => console.log(err))
+      .finally(() => deleteCart())
+    }
+
+    const changeHandler = (e) => {
+      setFormData({
+        ...formData,
+        [e.target.name]: e.target.value
+      } )
+    }
 
     return (
       <div className="container-fluid">
+        {id && <label className='alert alert-success'>Gracias por tu compra. Podras realizar el seguimiento con el ID: {id}</label>}
         {
           (cartList.length === 0)
           &&
@@ -43,53 +56,52 @@ function Cart() {
         }
         {
           (cartList.length >= 1)
-
           &&
           <>
-          <table className="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col" className="text-center">Producto</th>
-                <th scope="col" className="text-center">Cantidad</th>
-                <th scope="col" className="text-center">Precio</th>
-                <th scope="col" className="text-center"></th>
-              </tr>
-            </thead>
-            <tbody>
-              {cartList.map(prod => 
-                <tr key={prod.id}>
-                  <td className="text-center">
-                      <h6>{prod.name}</h6>
-                  </td>
-                  <td className="text-center">
-                    <p>{prod.cantidad}</p>
-                  </td>
-                  <td className="text-center"><p>${prod.price * prod.cantidad}</p></td>
-                  <td>
-                    <button onClick={() => deleteProd(prod.id)} className="delete btn btn-danger btn-sm">x</button>
-                  </td>
-                </tr>  
-              )}
-            </tbody>
-          </table>
-          
-          <div className="row justify-content-end">
-            <div className="col-3">
-                <p>Total: ${totalPrice()}</p>
-            </div>
-          </div>
-          
-          <br></br>
-          <div className="row justify-content-end">
+          <CartTable />
+          <div className="row justify-content-end text-center mt-3">
             <div className="col-3">
               <button onClick={deleteCart} className="btn btn-danger btn-sm">
-                Vaciar Carrito
-              </button>
-              <button onClick={addOrder} className="btn btn-success btn-sm">
-                Realizar orden
+                    Vaciar Carrito
               </button>
             </div>
           </div>
+          <div className="row justify-content-center text-center mt-3 mb-2">
+            <form className="col-3"   
+              onSubmit={addOrder} 
+              >
+                <div className="mb-3">
+                  <label className="form-label">Nombre</label>
+                  <input 
+                      type="text" 
+                      className="form-control"
+                      value={formData.name}
+                      onChange={changeHandler}
+                  />
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Email</label>
+                  <input 
+                      type="email" 
+                      className="form-control" 
+                      value={formData.email}
+                      onChange={changeHandler}
+                  />
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Telefono</label>
+                  <input 
+                      type="text" 
+                      className="form-control" 
+                      value={formData.phone}
+                      onChange={changeHandler}
+                  />
+                </div>
+                <button onClick={addOrder} className="btn btn-success btn-sm">
+                  Realizar orden
+                </button>
+              </form>
+            </div>
           </>
         }
       </div>
@@ -97,3 +109,5 @@ function Cart() {
   }
   
 export default Cart
+
+// minimo dos componentes hijos

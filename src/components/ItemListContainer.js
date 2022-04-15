@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ItemList from './ItemList';
-import { getFirestore, collection, getDocs, query, where } from "firebase/firestore"
+import { getFirestore, collection, getDocs, query, where, orderBy } from "firebase/firestore"
 
 
 function ItemListContainer() {
@@ -36,27 +36,7 @@ function ItemListContainer() {
       
         getAll();
 
-
-        /* if (id) {
-            // inicio promesa
-            getFetch
-            .then( resp => setProds(resp.filter(prod=> prod.category === id)))
-            .catch(err => console.log(err))
-            .finally(() => setLoad(false))
-            // fin promesa
-
-        } else {
-            // inicio promesa
-            getFetch
-            .then( resp => setProds(resp))
-            .catch(err => console.log(err))
-            .finally(() => setLoad(false))
-            // fin promesa
-        } */
     }, [idColl])
-
-
-    console.log(prods);
 
     return(
         <>

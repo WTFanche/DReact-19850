@@ -9,7 +9,7 @@ const AddCart = () => {
   return(
     <>
       <Link to="/cart" >
-        <button className="btn btn-warning btn-sm">Finalizar compra</button>
+        <button className="btn btn-warning btn-sm">Ver mi pedido</button>
       </Link>
       <br></br>
       <br></br>
@@ -31,7 +31,6 @@ function ItemDetail({product}) {
   const onAdd=(qty)=>{
     setButtonType("AddButton");
     addToCart({ ...product, cantidad: qty })
-    console.log(qty);
   }
   
   return (
