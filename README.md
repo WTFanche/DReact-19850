@@ -7,6 +7,8 @@ Cuenta con
 - filtro por categorías: tomando las categorías de la base de datos se generan filtros de productos
 - vistas de listas de productos: vista general de productos con foto y detalles mínimos
 - vista de detalles: vista con todos los detalles del producto y la opción de agregar una cantidad del mismo
+- vista del carrito de compras con productos agregados
+- generacion de orden con datos ingresados en form
 
 
 ## Instalación
