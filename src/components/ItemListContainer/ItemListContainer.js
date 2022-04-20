@@ -1,7 +1,6 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import ItemList from './ItemList';
+import ItemList from '../ItemList/ItemList';
 import { getFirestore, collection, getDocs, query, where, orderBy } from "firebase/firestore"
 
 
@@ -29,7 +28,7 @@ function ItemListContainer() {
                 setLoad(false);
       
             } catch (error) {
-               /* Ingresar de Errores */
+               /* Ingreso de Errores */
             }
                   
         }
@@ -42,7 +41,11 @@ function ItemListContainer() {
         <>
                 {load ? <div className='container-fluid text-center'> <h3>Cargando...</h3></div>
                     :
-                        <ItemList prods={prods} />
+                    <div className='container-fluid text-center'>
+                        <div className='row justify-content-center'>
+                            <ItemList prods={prods} />
+                        </div>
+                    </div>
                 }
         </>
 

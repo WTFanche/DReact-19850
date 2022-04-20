@@ -1,15 +1,21 @@
 import { addDoc, collection, getFirestore } from "firebase/firestore";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom"
-import { useCartContext } from "./CartContext"
-import CartTable from "./CartTable";
+import { useCartContext } from "../CartContext/CartContext"
+import CartTable from "../CartTable/CartTable";
 
 function Cart() {
   const [formData, setFormData] = useState({name: "", email: "", phone: ""})
   const [id, setId] = useState(null)
   const { cartList, deleteCart, totalPrice } = useCartContext()
 
-    const addOrder = async (e) => {
+    /* useEffect(() => {
+      return () => {
+        second
+      }
+    }, [third]) */
+    
+    const addOrder = (e) => {
       e.preventDefault();
       let order = {}
 
@@ -26,13 +32,15 @@ function Cart() {
 
       const dataBase = getFirestore()
       const qColl = collection(dataBase, "ordenes")
-      await addDoc(qColl, order)
+      addDoc(qColl, order)
       .then(({id}) => setId(id))
       .catch(err => console.log(err))
       .finally(() => deleteCart())
     }
 
     const changeHandler = (e) => {
+      console.log(e.target.name)
+      console.log(e.target.value);
       setFormData({
         ...formData,
         [e.target.name]: e.target.value
@@ -41,7 +49,11 @@ function Cart() {
 
     return (
       <div className="container-fluid">
-        {id && <label className='alert alert-success'>Gracias por tu compra. Podras realizar el seguimiento con el ID: {id}</label>}
+        {id && 
+          <center>
+            <label className='alert alert-success'>Gracias por tu compra. Podras realizar el seguimiento con el ID: {id}</label>
+          </center>
+        }
         {
           (cartList.length === 0)
           &&
@@ -67,16 +79,14 @@ function Cart() {
             </div>
           </div>
           <div className="row justify-content-center text-center mt-3 mb-2">
-            <form className="col-3"   
-              onSubmit={addOrder} 
+            <form className="col-3"    
               >
                 <div className="mb-3">
                   <label className="form-label">Nombre</label>
                   <input 
                       type="text" 
                       className="form-control"
-                      value={formData.name}
-                      onChange={changeHandler}
+                      onSubmit={changeHandler}
                   />
                 </div>
                 <div className="mb-3">
@@ -84,8 +94,7 @@ function Cart() {
                   <input 
                       type="email" 
                       className="form-control" 
-                      value={formData.email}
-                      onChange={changeHandler}
+                      onSubmit={changeHandler}
                   />
                 </div>
                 <div className="mb-3">
@@ -93,8 +102,7 @@ function Cart() {
                   <input 
                       type="text" 
                       className="form-control" 
-                      value={formData.phone}
-                      onChange={changeHandler}
+                      onSubmit={changeHandler}
                   />
                 </div>
                 <button onClick={addOrder} className="btn btn-success btn-sm">

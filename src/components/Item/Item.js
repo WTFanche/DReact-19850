@@ -2,9 +2,7 @@ import { Link } from "react-router-dom";
 
 
 function Item({prod}) {
-    return (
-    <div className='container-fluid'>
-        <div className='row justify-content-center'>
+    return (        
             <div key={prod.id}className='col-md-3'>                        
                 <div className="card w-100 mt-5" >
                     <center className="card-header">
@@ -21,10 +19,7 @@ function Item({prod}) {
                         </Link>                                                   
                     </center>
                 </div>
-            </div>
-        </div>  
-    </div>  
-        
+            </div>        
     )
 }
 

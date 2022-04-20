@@ -4,7 +4,7 @@ Somos Luna es un e-commerce para la venta de productos
 
 Cuenta con
 
--  filtro por categorías: tomando las categorías de la base de datos se generan filtros de productos
+- filtro por categorías: tomando las categorías de la base de datos se generan filtros de productos
 - vistas de listas de productos: vista general de productos con foto y detalles mínimos
 - vista de detalles: vista con todos los detalles del producto y la opción de agregar una cantidad del mismo
 

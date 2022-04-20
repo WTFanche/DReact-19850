@@ -7,27 +7,19 @@
   list-style: none;
 }
 
-.padd1 {
-  padding-left: 20px;
-}
-
-.padd2 {
-  padding-left: 330px;
-}
-
-.padd3 {
-  padding-left: 30px;
-}
 .logoCarro {
-  width: 30px;
-  height: 30px;
-}
-
-.img2 {
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
 }
 
 .linkNav{
+  text-decoration: none;
+}
+
+.navCat{
+  padding-left: 300px;
+}
+
+.totalItem {
   text-decoration: none;
 }
